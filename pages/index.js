@@ -3,16 +3,16 @@ import Card from 'components/Card'
 import Hero from 'components/Hero'
 import React from 'react'
 
-function Home({ products, hero, dburl }) {
+function Home({ products, dburl }) {
   return (
     <div>
       <main>
         {/* <pre>{JSON.stringify(products, null, 2)}</pre> */}
         <Hero
-          heading={hero.heading}
-          subHeading={hero.subHeading}
-          buttonText={hero.buttonText}
-          bgImage={`${dburl}${hero.thumbnail.data.attributes.formats.small.url}`}
+          heading="Next Level"
+          subHeading="Streaming, Gaming, Editing, you name it!"
+          buttonText="Learn More"
+          bgImage="/hero-bg.png"
         />
         <h3>Featured Products</h3>
         <div className="flex justify-space-evenly flex-wrap">
@@ -49,15 +49,15 @@ export async function getServerSideProps() {
   const productRes = await axios.get(
     `${process.env.dburl}/api/products?populate=*`
   )
-  const heroRes = await axios.get(`${process.env.dburl}/api/hero?populate=*`)
+  // const heroRes = await axios.get(`${process.env.dburl}/api/hero?populate=*`)
   const products = productRes.data.data
-  const hero = heroRes.data.data.attributes
-  console.log(hero.thumbnail.data.attributes.formats.small.url)
+  // const hero = heroRes.data.data.attributes
+  // console.log(hero.thumbnail.data.attributes.formats.small.url)
   return {
     props: {
       products: products,
-      hero: hero,
       dburl: process.env.dburl,
+      // hero: hero,
     },
   }
 }

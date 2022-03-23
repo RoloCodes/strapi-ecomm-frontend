@@ -20,7 +20,7 @@ function Hero({ heading, subHeading, buttonText, bgImage }) {
         <div>
           <h1>{heading}</h1>
           <p>{subHeading}</p>
-          <Link href="/about">
+          <Link href="/">
             <a>{buttonText ? <Button large>{buttonText}</Button> : ''}</a>
           </Link>
         </div>
